@@ -1,17 +1,22 @@
 const express = require('express')
-require('dotenv').config()
+//Rutas
+const rutaProductos = require('./routes/products')
 
+//Variables de entorno
+require('dotenv').config()
 const PORT = process.env.PORT
 
 const app = express()
 
+//Middlewares
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-app.get('/',(req,res)=>{
-    res.send('hola')
-})
 
+app.use(rutaProductos)
+
+
+//Accionar servidor
 app.listen((PORT), ()=>{
-    console.log('Servidor en línea')
+    console.log(`Servidor en línea en el puerto ${PORT}`)
 })
