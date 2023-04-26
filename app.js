@@ -10,9 +10,10 @@ const PORT = process.env.PORT;
 const app = express();
 
 //Middlewares
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+//Rutas de productos
 app.use("/", rutaProductos);
 
 //Accionar servidor
